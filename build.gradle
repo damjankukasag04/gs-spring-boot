@@ -38,21 +38,21 @@ dependencies {
 }
 
 // Publishes all publications produced by bootJar
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifact source: bootJar
-        }
-    }
-    repositories {
-        maven {
-            credentials {
-                username NEXUSUSERNAME
-                password NEXUSPASSWORD
-            }
-            def releasesRepoUrl = "${NEXUSURL}/content/repositories/releases"
-            def snapshotsRepoUrl = "${NEXUSURL}/content/repositories/snapshots"
-            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl            
-        }
-    }
-}
+// publishing {
+//     publications {
+//         mavenJava(MavenPublication) {
+//             artifact source: bootJar
+//         }
+//     }
+//     repositories {
+//         maven {
+//             credentials {
+//                 username NEXUSUSERNAME
+//                 password NEXUSPASSWORD
+//             }
+//             def releasesRepoUrl = "${NEXUSURL}/content/repositories/releases"
+//             def snapshotsRepoUrl = "${NEXUSURL}/content/repositories/snapshots"
+//             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl            
+//         }
+//     }
+// }
