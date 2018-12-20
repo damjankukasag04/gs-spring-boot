@@ -17,7 +17,7 @@ pipeline {
         stage ('Build with Gradle') {
             steps {
                 withCredentials([usernamePassword(credentialsId: ${nexus_creds}, usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
-                    sh "./gradlew build --no-daemon --info --stacktrace -PNEXUSUSERNAME=${env.NEXUS_USERNAME} -PNEXUSPASSWORD=${env.NEXUS_PASSWORD}"
+                    sh "./gradlew build --no-daemon --info --stacktrace -PNEXUSUSERNAME=$NEXUS_USERNAME -PNEXUSPASSWORD=$NEXUS_PASSWORD"
                 }
             }
         }
