@@ -2,7 +2,10 @@
 
 pipeline {
 
-    def git_creds = 'c652d29e-f9f8-4008-b81e-5e582bb4f4d3' 
+    environment {
+        def git_creds = 'c652d29e-f9f8-4008-b81e-5e582bb4f4d3' 
+    }
+
     agent any
 
     stages {
@@ -13,7 +16,7 @@ pipeline {
         }
         stage ('Build with Gradle') {
             steps {
-                withCredentials([usernamePassword(credentialsId: git_creds, usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: ${git_creds}, usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
                     sh './gradlew build --no-daemon --info --stacktrace -PnexusUsername=NEXUS_USERNAME -PnexusPassword=NEXUS_PASSWORD'
                 }
             }
