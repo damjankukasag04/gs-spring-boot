@@ -47,11 +47,11 @@ publishing {
     repositories {
         maven {
             credentials {
-                username nexusUsername
-                password nexusPassword
+                username "${NEXUSUSERNAME}"
+                password "${NEXUSPASSWORD}"
             }
-            def releasesRepoUrl = "${nexusUrl}/content/repositories/releases"
-            def snapshotsRepoUrl = "${nexusUrl}/content/repositories/snapshots"
+            def releasesRepoUrl = "${NEXUSURL}/content/repositories/releases"
+            def snapshotsRepoUrl = "${NEXUSURL}/content/repositories/snapshots"
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl            
         }
     }
