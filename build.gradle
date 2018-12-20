@@ -47,8 +47,8 @@ publishing {
     repositories {
         maven {
             credentials {
-                username "${NEXUSUSERNAME}"
-                password "${NEXUSPASSWORD}"
+                username NEXUSUSERNAME
+                password NEXUSPASSWORD
             }
             def releasesRepoUrl = "${NEXUSURL}/content/repositories/releases"
             def snapshotsRepoUrl = "${NEXUSURL}/content/repositories/snapshots"
