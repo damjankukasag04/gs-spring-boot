@@ -19,10 +19,10 @@ pipeline {
                 sh './gradlew build --no-daemon --info --stacktrace -PnexusUsername=NEXUS_USERNAME -PnexusPassword=NEXUS_PASSWORD'
             }
         }
-        // stage ('Publish to nexus.ag04.io') {
-        //     steps {
-        //         sh './gradlew publish'
-        //     }
-        // }
+         stage ('Publish to nexus.ag04.io') {
+             steps {
+                 sh './gradlew publish'
+             }
+         }
     }
 }
