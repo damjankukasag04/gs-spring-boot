@@ -1,12 +1,12 @@
 #!/usr/bin/env groovy
 
+def git_creds = 'c652d29e-f9f8-4008-b81e-5e582bb4f4d3'
+
 pipeline {
     agent any
 
-    environment {
-        NEXUS_USERNAME     = credentials('username')
-        NEXUS_PASSWORD = credentials('password')
-    }
+    withCredentials([
+        [$class: 'usernamePassword', credentialsId: git_creds, usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD'],
 
     stages {
         stage('Clean build with Gradle') {
