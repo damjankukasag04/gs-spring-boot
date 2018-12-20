@@ -14,10 +14,10 @@ pipeline {
                 sh './gradlew build --no-daemon --info --stacktrace'
             }
         }
-        stage ('Publish to nexus.ag04.io') {
-            steps {
-                sh './gradlew publish'
-            }
-        }
+        // stage ('Publish to nexus.ag04.io') {
+        //     steps {
+        //         sh './gradlew publish'
+        //     }
+        // }
     }
 }
