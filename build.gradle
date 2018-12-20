@@ -18,7 +18,6 @@ apply plugin: 'io.spring.dependency-management'
 // Spring Boot gradle plugin, creates executable Spring Boot jar
 bootJar {
     baseName = 'gs-spring-boot'
-    version =  '0.1.1'
 }
 
 repositories {
@@ -51,7 +50,9 @@ publishing {
                 username nexusUsername
                 password nexusPassword
             }
-            url "${nexusUrl}/content/repositories/snapshots"
+            def releasesRepoUrl = "${nexusUrl}/content/repositories/releases"
+            def snapshotsRepoUrl = "${nexusUrl}/content/repositories/snapshots"
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl            
         }
     }
 }
