@@ -14,6 +14,15 @@ pipeline {
                 sh './gradlew clean'
             }
         }
+        stage('Dummy build') {
+            steps {
+                sh 'echo "Hello World"'
+                sh '''
+                    echo "Multiline shell steps works too"
+                    ls -lah
+                '''
+            }
+        }
         stage ('Build with Gradle') {
             steps {
                 // withCredentials([usernamePassword(credentialsId: '822b18eb-56d3-4121-b39d-3db31ffefe8a', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
