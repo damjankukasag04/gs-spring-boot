@@ -31,11 +31,11 @@ pipeline {
                 }
             }
         }
-        // stage ('Publish to nexus.ag04.io') {
-        //     steps {
-        //         sh './gradlew publish'
-        //     }
-        // }
+        stage ('Publish to nexus.ag04.io') {
+            steps {
+                sh "./gradlew publish -Pversion='0.0.1-SNAPSHOT -PNEXUSUSERNAME=$NEXUS_USERNAME -PNEXUSPASSWORD=$NEXUS_PASSWORD"
+            }
+        }
     }
     post {
         always {
