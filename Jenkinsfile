@@ -8,6 +8,8 @@ pipeline {
 
     agent any
 
+    def projectVersion = sh script: "gradle getVersion()", returnStdout: true
+
     stages {
         stage('Clean build with Gradle') {
             steps {
@@ -34,7 +36,7 @@ pipeline {
         stage ('Publish to nexus.ag04.io') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'nexus_test_creds', usernameVariable: 'NEXUS_USERNAME', passwordVariable: 'NEXUS_PASSWORD')]) {
-                    sh "./gradlew publish -Pversion='0.0.1-SNAPSHOT' -PNEXUSUSERNAME=$NEXUS_USERNAME -PNEXUSPASSWORD=$NEXUS_PASSWORD"
+                    sh "./gradlew publish -Pversion='0.0.2-SNAPSHOT' -PNEXUSUSERNAME=$NEXUS_USERNAME -PNEXUSPASSWORD=$NEXUS_PASSWORD"
                 }
             }
         }
