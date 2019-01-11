@@ -8,8 +8,6 @@ pipeline {
 
     agent any
 
-    def projectVersion = sh script: "gradle getVersion()", returnStdout: true
-
     stages {
         stage('Clean build with Gradle') {
             steps {
